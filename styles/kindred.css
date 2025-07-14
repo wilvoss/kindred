@@ -176,7 +176,7 @@ h3 {
 page h1,
 tutorial h1 {
   margin: var(--defaultUnit) 0 0 0;
-  /* font-size: 2.8em; */
+  font-size: 2.8em;
   text-shadow: 0px -1px 0px hsl(var(--appBackground)), 0px 0px 20px hsl(var(--appBackground));
 }
 
@@ -2120,12 +2120,8 @@ container {
 }
 
 me container {
-  box-shadow: 0px 5px 5px hsla(var(--appForeground), 0.5);
-  background: hsl(var(--appBackgroundStrongest));
-}
-
-page me container {
   box-shadow: 0px 5px 5px hsla(var(--appForeground), 0.25);
+  background: hsl(var(--appBackgroundStrongest));
 }
 
 me.pushed container,
@@ -2745,6 +2741,10 @@ confetti.drop {
     padding: 0;
   }
 
+  page h1,
+  tutorial h1 {
+    font-size: 2.3em;
+  }
 
   hint,
   notification {
