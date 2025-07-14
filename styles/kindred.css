@@ -1786,8 +1786,8 @@ herald face {
   position: absolute;
   z-index: 100;
   mask-image: url(../images/CatFace.svg);
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   -webkit-mask-image: url(../images/CatFace.svg);
   mask-size: cover;
   mask-repeat: no-repeat;
