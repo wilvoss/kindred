@@ -458,7 +458,7 @@ a.button {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   border: 0px solid var(--color1);
   border-radius: var(--borderRadius);
   background-color: var(--color1);
@@ -694,19 +694,27 @@ a.button:active {
 smallbuttons,
 controlgroup {
   display: flex;
-  column-gap: 7px;
+  column-gap: 4px;
   flex-direction: row;
   justify-content: space-between;
   width: 250px;
   text-align: left;
 }
 
+smallbuttons button {
+  border-radius: 4px;
+}
+
 smallbuttons button:first-of-type {
-  border-radius: 25px 6px 6px 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  padding-left: 3px;
 }
 
 smallbuttons button:last-of-type {
-  border-radius: 6px 25px 25px 6px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-right: 3px;
 }
 
 controlgroup {
@@ -1690,7 +1698,7 @@ modal me container {
 }
 
 me container piece {
-  scale: .83;
+  scale: .77;
   margin-top: 4px;
 }
 
@@ -1785,7 +1793,7 @@ tutorial me {
 
 stage me container,
 tutorial me container {
-  transform: translateY(0) scale(1.2);
+  transform: translateY(0) scale(1.3);
 }
 
 modal me container piece gild {
@@ -2125,21 +2133,21 @@ me.nope container {
 
 @keyframes nope {
   33% {
-    transform: translate(2px) scale(1.1);
+    transform: translate(2px) scale(1.3);
   }
 
   66% {
-    transform: translate(-2px) scale(1.1);
+    transform: translate(-2px) scale(1.3);
   }
 }
 
 @-webkit-keyframes nope {
   33% {
-    transform: translate(2px) scale(1.1);
+    transform: translate(2px) scale(1.3);
   }
 
   66% {
-    transform: translate(-2px) scale(1.1);
+    transform: translate(-2px) scale(1.3);
   }
 }
 
@@ -2468,7 +2476,7 @@ ranks rank name {
 }
 
 page ranks {
-  margin-top: -130px;
+  margin-top: -108px;
 }
 
 page ranks+credit {
@@ -2477,7 +2485,7 @@ page ranks+credit {
 }
 
 page ranklabel {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -2486,7 +2494,7 @@ page ranklabel {
   background: hsla(var(--appForeground), .6);
   padding: 2px var(--defaultGap) 1px;
   width: calc(100% - 2 * var(--defaultGap));
-  height: var(--defaultGap);
+  height: calc(.75 * var(--defaultGap));
   color: hsla(var(--appBackground), 1);
   font-size: .8em;
   text-transform: uppercase;

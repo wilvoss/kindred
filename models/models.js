@@ -251,12 +251,40 @@ class ThemeObject {
 
 var Themes = [
   new ThemeObject({
+    name: 'Keen',
+    color1: 'rgb(0 184 255)',
+    color2: 'rgb(0 222 0) ',
+    color3: 'rgb(255, 112, 227)',
+    isSelected: true,
+  }),
+  new ThemeObject({
+    name: 'Content',
+    color1: 'rgb(0 202 234)',
+    color2: 'rgb(84, 184, 0)',
+    color3: 'rgb(184 222 0)',
+    color3contrast: 'rgb(56, 122, 0)',
+  }),
+  new ThemeObject({
+    name: 'Alive',
+    color1: 'rgb(0 136 8)',
+    color2: 'rgb(0 176 243)',
+    color3: 'rgb(239 216 0)',
+    color3contrast: 'rgb(0 136 8)',
+  }),
+  new ThemeObject({
+    name: 'Wise',
+    color1: 'rgb(145 97 21)',
+    color2: 'rgb(104 195 156)',
+    color3: 'rgb(234 145 4)',
+    darkPatternHSL: '0, 0%, 50%',
+    darkBlendMode: 'luminosity',
+  }),
+  new ThemeObject({
     name: 'Awake',
     color1: 'hsl(313, 44%, 25%)',
     color2: 'hsl(187, 42%, 46%)',
     color3: 'hsl(64, 60%, 49%)',
     color3contrast: 'black',
-    isSelected: true,
   }),
   new ThemeObject({
     name: 'Aware',
@@ -280,34 +308,6 @@ var Themes = [
     darkPatternOpacity: 0.5,
     darkPatternHSL: '0, 0%, 0%',
     darkBlendMode: 'overlay',
-  }),
-  new ThemeObject({
-    name: 'Keen',
-    color1: 'rgb(0 184 255)',
-    color2: 'rgb(0 222 0) ',
-    color3: 'rgb(255, 112, 227)',
-  }),
-  new ThemeObject({
-    name: 'Content',
-    color1: 'rgb(0 202 234)',
-    color2: 'rgb(84, 184, 0)',
-    color3: 'rgb(184 222 0)',
-    color3contrast: 'rgb(56, 122, 0)',
-  }),
-  new ThemeObject({
-    name: 'Alive',
-    color1: 'rgb(0 136 8)',
-    color2: 'rgb(0 176 243)',
-    color3: 'rgb(239 216 0)',
-    color3contrast: 'rgb(0 136 8)',
-  }),
-  new ThemeObject({
-    name: 'Wise',
-    color1: 'rgb(145 97 21)',
-    color2: 'rgb(104 195 156)',
-    color3: 'rgb(234 145 4)',
-    darkPatternHSL: '0, 0%, 50%',
-    darkBlendMode: 'luminosity',
   }),
   new ThemeObject({
     name: 'Moody',

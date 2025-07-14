@@ -14,7 +14,7 @@ var app = new Vue({
   data: {
     serviceWorker: '',
     storedVersion: 0,
-    currentVersion: '1.0.009',
+    currentVersion: '1.0.010',
     deviceHasTouch: true,
     allPlayerRanks: AllPlayerRanks,
     currency: new Currency(),
@@ -514,7 +514,7 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
     },
 
     SelectTheme(_theme) {
-      note('SelectTheme(theme) called for: "' + _theme.name + '"');
+      highlight('SelectTheme(theme) called for: "' + _theme.name + '"');
       this.appSettingsThemes.forEach((t) => {
         t.isSelected = _theme == t;
       });
@@ -1107,6 +1107,8 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         }
         if (_themeFound != '') {
           this.SelectTheme(_themeFound);
+        } else {
+          this.SelectTheme(this.appSettingsThemes[0]);
         }
       } catch (_error) {
         error('_userSettingsTheme error: ' + _error);
