@@ -1,0 +1,24 @@
+:root {
+  --shape1: url(./images/CatSquare.svg);
+  --shape2: url(./images/CatCircle.svg);
+  --shape3: url(./images/CatTriangle.svg);
+  --shape4: url(./images/CatHexagon.svg);
+
+  --patternOpacity: .3;
+}
+
+wallpaper.square {
+  background-image: url(../images/CatSquare.svg);
+}
+
+wallpaper.circle {
+  background-image: url(../images/CatCircle.svg);
+}
+
+wallpaper.triangle {
+  background-image: url(../images/CatTriangle.svg);
+}
+
+wallpaper.hexagon {
+  background-image: url(../images/CatHexagon.svg);
+}
