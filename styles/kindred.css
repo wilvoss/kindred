@@ -2627,12 +2627,7 @@ ranks rank credit {
 
 
 ranks rank name detail {
-  font-size: 1.3em;
-  font-family: var(--themeFont);
-}
-
-page ranks rank name detail {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-family: var(--themeFont);
 }
 

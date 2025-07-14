@@ -14,7 +14,7 @@ var app = new Vue({
   data: {
     serviceWorker: '',
     storedVersion: 0,
-    currentVersion: '1.0.021',
+    currentVersion: '1.0.022',
     deviceHasTouch: true,
     allPlayerRanks: AllPlayerRanks,
     currency: new Currency(),
@@ -2212,7 +2212,7 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         if (this.gameLastHighScore.numberOfPerfectClears === this.gameLastHighScore.totalPossibleClears) {
           title = 'Perfect!';
           if (this.gameCurrentJustRankedUp && this.userNumberOfPerfectBasicGames < 3) {
-            title = "<span class='ranktext'>" + this.getCurrentPlayerRank.name + ' unlocked!!</span>';
+            title = "<span class='ranktext'>" + this.getCurrentPlayerRank.name + ' Unlocked!!</span>';
           }
         }
       } else {
