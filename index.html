@@ -421,12 +421,12 @@
               </container>
             </board>
             <controlgroup>
-              <checkbox :class="{on: !userSettingsUseAltPatterns}" @click="ToggleUsingAltPattern(event)">
-                Alt Patterns
-                <toggle></toggle>
-              </checkbox>
               <checkbox :class="{on: !userSettingsUseCats}" @click="ToggleUsingCats(event)">
                 Basic Shapes
+                <toggle></toggle>
+              </checkbox>
+              <checkbox :class="{on: !userSettingsUseAltPatterns}" @click="ToggleUsingAltPattern(event)">
+                Alt Patterns
                 <toggle></toggle>
               </checkbox>
               <checkbox :class="{on: userSettingsUseDarkMode}" @click="ToggleUsingDarkMode(event)">
