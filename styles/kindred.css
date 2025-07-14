@@ -795,7 +795,7 @@ icon.help {
 icon.gem {
   mask-image: url(../images/icon_gem.svg);
   -webkit-mask-image: url(../images/icon_gem.svg);
-  background-color: var(--colorRewards);
+  background-color: var(--color2);
 }
 
 icon.spinner,
