@@ -1796,9 +1796,9 @@ herald face {
 }
 
 herald face {
+  position: relative;
   width: 50%;
   height: 50%;
-  position: relative;
 }
 
 .splashboard,
@@ -2453,7 +2453,7 @@ ranks rank name {
 }
 
 page ranks {
-  margin-top: -92px;
+  margin-top: -130px;
 }
 
 page ranks+credit {

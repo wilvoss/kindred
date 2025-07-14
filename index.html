@@ -83,8 +83,7 @@
               <rank
                 :class="['rank' + getCurrentPlayerRank.rank, getLastRank.rank === getCurrentPlayerRank.rank ? 'last' : '']"
                 :style="{backgroundColor: 'hsl(' + getCurrentPlayerRank.hue + ', 50%, 50%)'}">
-                <ranklabel>{{userSettingsUseHardCoreMode ? 'Hardcore Rank' : 'Current Rank'}}
-                  <icon class="info"></icon>
+                <ranklabel>{{userSettingsUseHardCoreMode ? '' : ''}}
                 </ranklabel>
                 <name>
                   <detail :style="{color: 'hsl(' + getCurrentPlayerRank.hue + ', 100%, 92%)'}">
