@@ -14,7 +14,7 @@ var app = new Vue({
   data: {
     serviceWorker: '',
     storedVersion: 0,
-    currentVersion: '1.0.010',
+    currentVersion: '1.0.011',
     deviceHasTouch: true,
     allPlayerRanks: AllPlayerRanks,
     currency: new Currency(),
@@ -160,7 +160,7 @@ var app = new Vue({
 
     ResetApp() {
       note('NewGame() called');
-      let confirm = window.confirm('Are you sure you want to reset the entire app? Everything will be lost!');
+      let confirm = window.confirm('Are you sure you want to reset the entire game? Everything will be lost!');
       if (confirm) {
         this.appIsBeingReset = true;
         localStorage.clear();

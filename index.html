@@ -18,7 +18,7 @@
     <meta property="og:title" content="Kindred Cats!" />
     <meta property="og:site_name" content="kindredcats.bigtentgames.com" />
     <meta property="og:author" content="Wil Voss" />
-    <meta property="og:description" content="A game of herding kindred cats." />
+    <meta property="og:description" content="A game of matching cat likenesses." />
     <meta property="og:type" content="photo" />
     <meta property="og:url" content="https://kindredcats.bigtentgames.com" />
     <meta property="og:image" content="https://kindredcats.bigtentgames.com/images/kindredcats_og.png" />
@@ -27,7 +27,7 @@
 
     <meta name="keywords"
       content="Kindred Cats, Big Tent Games, Games, Causual game, Puzzle game, Puzzle logic, Wil Voss" />
-    <meta name="description" content="A game of herding kindred cats." />
+    <meta name="description" content="A game of matching cat likenesses." />
 
     <link id="appleicon" rel="apple-touch-icon" sizes="1024x1024" href="/images/icon1024-apple-touch.png">
 
@@ -49,7 +49,7 @@
   <body>
     <wallpaper onclick="app.ClearEphemeralVisualStates()"></wallpaper>
     <app id="app" v-cloak
-      :class="[{hardcore: userSettingsUseHardCoreMode},('rank' + getCurrentPlayerRank.rank), {challenge: appVisualStateShowPageChallenge, tutorial: appTutorialIsInPlay, splashboard: splashBoard}]"
+      :class="[{basic: !userSettingsUseCats, hardcore: userSettingsUseHardCoreMode},('rank' + getCurrentPlayerRank.rank), {challenge: appVisualStateShowPageChallenge, tutorial: appTutorialIsInPlay, splashboard: splashBoard}]"
       @click="HandleTouchApp()">
       <link v-if="userSettingsUseDarkMode" rel="stylesheet" href="styles/kindred-darkmode.css" media="screen" />
       <link v-if="userSettingsUseCats" rel="stylesheet" href="styles/cats-kindred.css" media="screen" />
@@ -69,31 +69,36 @@
             </h2>
           </section>
           <section>
+            <me @click="CreateConfetti(getCurrentPlayerRank.hue, getCurrentPlayerRank.rank)">
+              <container>
+                <piece
+                  :style="{maskImage: 'var(--shape2)', webkitMaskImage: 'var(--shape2)', backgroundColor: 'var(--color2)'}">
+                  <face></face>
+                  <gild :style="{backgroundImage: 'var(--bgImage2)' }">
+
+                  </gild>
+                </piece>
+              </container>
+            </me>
+
             <h1>Kindred Cats!</h1>
-            <p>A game of herding kindred cats.</p>
           </section>
           <section>
-            <herald @click="ToggleAchievements(event, true)" :class="['rank' + getCurrentPlayerRank.rank]"
-              :style="{backgroundColor: 'hsl(' + getCurrentPlayerRank.hue + ', 50%, 50%)'}">
-              <face></face>
 
-              <!-- <icon></icon> -->
-            </herald>
+
             <ranks style="cursor: pointer" @click="ToggleAchievements(event, true)">
               <rank
-                :class="['rank' + getCurrentPlayerRank.rank, getLastRank.rank === getCurrentPlayerRank.rank ? 'last' : '']"
-                :style="{backgroundColor: 'hsl(' + getCurrentPlayerRank.hue + ', 50%, 50%)'}">
+                :class="['rank' + getCurrentPlayerRank.rank, getLastRank.rank === getCurrentPlayerRank.rank ? 'last' : '']">
                 <ranklabel>{{userSettingsUseHardCoreMode ? '' : ''}}
                 </ranklabel>
                 <name>
-                  <detail :style="{color: 'hsl(' + getCurrentPlayerRank.hue + ', 100%, 92%)'}">
+                  <detail :style="{color: 'hsl(' + getCurrentPlayerRank.hue + ', 50%, 50%)'}">
                     {{getCurrentPlayerRank.name}}
                   </detail>
-                  <credit>{{getCurrentPlayerRank.levels}} levels per game</credit>
+                  <credit class="simple" v-html="getHomePageRankSubcredit"></credit>
                 </name>
               </rank>
             </ranks>
-            <credit v-html="getHomePageRankSubcredit"></credit>
           </section>
           <section>
             <button v-if="!gameDailyChallengeAlreadyScored && gameDailyChallenge.allLevels.length > 0"
@@ -125,9 +130,7 @@
             <button class="inline" v-if="isInNativeAppWebView" title="Click to share this game with your friends."
               @click="ShareApp()">Share</button>
             <a v-if="!isInNativeAppWebView" title="Click to buy me a cup of coffee." class="button inline"
-              href="https://www.buymeacoffee.com/wilvoss" target="_blank">Donate! </a>
-            <button class="inline" v-if="UseDebug" title="Click to reset the entire app." @click="ResetApp()">RESET
-              APP</button>
+              href="https://www.buymeacoffee.com/wilvoss" target="_blank">Buy me a coffee! </a>
           </section>
         </content>
       </page>
@@ -183,7 +186,7 @@
           <section>
             <h2>Created by</h2>
             <credit>Wil Voss</credit>
-            <h2 style="margin-top: var(--defaultGap)">Feedback and ideas</h2>
+            <h2>Feedback and ideas</h2>
             <credit>Lex Barbieri</credit>
             <credit>Cole Benson</credit>
             <credit>Melinda Cocolas</credit>
@@ -204,7 +207,7 @@
             <a class="button secondary isolate"
               :href="'mailto:bigtentgames@icloud.com?subject=Feedback - Kindred Cats v' + currentVersion">Give
               feedback</a>
-            <h2 style="margin-top: var(--defaultGap)">How can you help?</h2>
+            <h2>How can you help?</h2>
             <credit> You can share this game with your friends!</credit>
             <button title="Click to share this game with your friends." class="quaternary isolate inline small"
               @click="ShareApp()">
@@ -339,8 +342,6 @@
             <leftright v-for="e in appSettingsNumberOfHighScoresShown - userScoresHighDailyByDate.length">
               <left></left>&nbsp;<right></right>
             </leftright>
-          </section>
-          <section>
             <h2 style="margin-bottom: var(--defaultGap)">Ranked Games</h2>
             <leftright @click="SetScoreForSharingAndShare(score, getNormalModeComputed)"
               v-for="score in userScoresHighEasyByValue" :class="{current: score.isCurrent}">
@@ -352,7 +353,7 @@
             </leftright>
           </section>
           <section>
-            <button class="simple danger" @click="ClearAllUserScores()">Clear All Scores</button>
+            <button class="simple danger" @click="ResetApp()">Reset Game</button>
           </section>
         </content>
       </modal>
@@ -390,7 +391,7 @@
                 <toggle></toggle>
               </checkbox>
             </controlgroup>
-            <h2 style="margin-top: var(--defaultGap)">Appearance</h2>
+            <h2>Appearance</h2>
             <board>
               <container class="dropped">
                 <piece style="mask-image: var(--shape4); background-color: var(--color1)">
@@ -677,17 +678,17 @@
             <button :aria-disabled="appTutorialCurrentStepIndex === 0" :disabled="appTutorialCurrentStepIndex === 0"
               v-if="appTutorialCurrentStepIndex < appTutorialSteps.length - 1"
               :class="{disabled: appTutorialCurrentStepIndex === 0}" @click="HandleTutorialBack()"
-              class="secondary">Back</button>
+              class="primary">Back</button>
             <button
               v-if="appTutorialCurrentStepIndex < appTutorialSteps.length - 1 && appTutorialCurrentStepIndex === 4"
-              class="secondary" @click="HandleTutorialNext()">Next</button>
+              class="primary" @click="HandleTutorialNext()">Next</button>
             <button
               v-if="appTutorialCurrentStepIndex < appTutorialSteps.length - 1 && appTutorialCurrentStepIndex !== 4"
-              class="secondary" @click="HandleTutorialNext()">Next</button>
+              class="primary" @click="HandleTutorialNext()">Next</button>
             <button v-if="!appTutorialUserHasSeen && appTutorialCurrentStepIndex === appTutorialSteps.length - 1"
-              class="primary" @click="HandleDoneTutorial()">Let's Go!</button>
+              class="secondary" @click="HandleDoneTutorial()">Let's Go!</button>
             <button v-if="appTutorialUserHasSeen && appTutorialCurrentStepIndex === appTutorialSteps.length - 1"
-              class="secondary" @click="HandleSkipTutorial()">Done</button>
+              class="primary" @click="HandleSkipTutorial()">Done</button>
           </smallbuttons>
         </section>
       </tutorial>

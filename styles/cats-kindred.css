@@ -4,7 +4,7 @@
   --shape3: url(./images/CatTriangle.svg);
   --shape4: url(./images/CatHexagon.svg);
 
-  --patternOpacity: .3;
+  --patternOpacity: .4;
 }
 
 wallpaper.square {

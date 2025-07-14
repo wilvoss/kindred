@@ -152,7 +152,9 @@ h5 {
 h1 {
   flex-basis: auto;
   margin: 0px 0px 0px 0px;
-  font-size: 2.5em;
+  color: var(--color1);
+  /* color: hsl(var(--appForegroundWeak)); */
+  font-size: 2.3em;
   font-family: var(--themeFont);
 }
 
@@ -509,7 +511,8 @@ a.button.tertiary {
 
 page button,
 page a.button {
-  background-color: hsla(var(--appForeground), .75);
+  background-color: hsla(var(--appForeground), 0.1);
+  color: hsl(var(--appForeground));
   font-size: 1em;
   font-family: var(--appFont);
   text-transform: unset;
@@ -521,7 +524,8 @@ page a.button.secondary {
 }
 
 page button.on {
-  background-color: hsla(var(--appForeground), 1);
+  /* outline: 1px solid hsla(var(--appForeground), 0.25); */
+  background-color: hsla(var(--appForeground), 0.05);
 }
 
 page button.inline icon,
@@ -1114,7 +1118,7 @@ tutorial container description b {
   border-radius: 2px 2px 0px 0px;
   background: hsl(var(--appBackground));
   padding: 2px 3px 0px;
-  color: var(--color1);
+  color: hsl(var(--appForegroundStrong));
   font-weight: normal;
   text-align: center;
 }
@@ -1507,7 +1511,6 @@ description {
   margin: 10px 0 0;
   padding: 0px 40px;
   height: 1.5em;
-  color: var(--color1);
   font-size: 0.8em;
 }
 
@@ -1697,9 +1700,21 @@ modal me container {
   border-radius: 50%;
 }
 
+.basic container.dropped,
+.basic me container,
+.basic page container,
+.basic modal modes container,
+.basic modal me container {
+  border-radius: var(--borderRadius);
+}
+
 me container piece {
   scale: .77;
   margin-top: 4px;
+}
+
+.basic me container piece {
+  margin-top: 0px;
 }
 
 container.include,
@@ -1803,8 +1818,7 @@ modal me container piece gild {
   background-color: var(--color2);
 }
 
-piece face,
-herald face {
+piece face {
   display: block;
   position: absolute;
   z-index: 100;
@@ -1818,10 +1832,8 @@ herald face {
   background-color: black;
 }
 
-herald face {
-  position: relative;
-  width: 50%;
-  height: 50%;
+.basic piece face {
+  display: none;
 }
 
 .splashboard,
@@ -2112,6 +2124,10 @@ me container {
   background: hsl(var(--appBackgroundStrongest));
 }
 
+page me container {
+  box-shadow: 0px 5px 5px hsla(var(--appForeground), 0.25);
+}
+
 me.pushed container,
 me container:focus,
 me container:active {
@@ -2123,7 +2139,7 @@ stage me container:focus,
 stage me container:active,
 tutorial me container:focus,
 tutorial me container:active {
-  transform: translateY(2px) scale(1.1);
+  transform: translateY(2px) scale(1.3);
 }
 
 me.nope container {
@@ -2456,8 +2472,8 @@ span.locked rank {
 ranks rank {
   gap: 0px;
   margin-bottom: 0px;
-  box-shadow: inset 0px 1px 4px hsla(0, 0%, 0%, 0.4);
-  background-image: linear-gradient(-45deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0), rgba(0, 0, 0, .2), rgba(0, 0, 0, 0));
+  /* box-shadow: inset 0px 1px 4px hsla(0, 0%, 0%, 0.4); */
+  /* background-image: linear-gradient(-45deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0), rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)); */
   padding: 0px 6px;
   width: 100%;
   max-width: 330px;
@@ -2465,19 +2481,21 @@ ranks rank {
   text-shadow: none;
 }
 
+/* 
 page ranks rank {
   box-shadow: inset 0px 1px 4px hsla(0, 0%, 0%, .4);
 
-}
+} */
 
 
 ranks rank name {
   padding: 17px 0px 10px;
 }
 
+/* 
 page ranks {
   margin-top: -108px;
-}
+} */
 
 page ranks+credit {
   margin-top: 8px;
@@ -2571,6 +2589,11 @@ ranks rank name {
   text-shadow: 0px -1px 0px rgba(0, 0, 0, .3);
 }
 
+page ranks rank name {
+  color: hsl(var(--appForeground));
+  text-shadow: initial
+}
+
 rank.locked {
   filter: grayscale(1);
   background-color: hsla(0, 0%, 50%, 1);
@@ -2608,12 +2631,12 @@ ranks rank credit {
 
 
 ranks rank name detail {
-  font-size: 1.4em;
+  font-size: 1.3em;
   font-family: var(--themeFont);
 }
 
 page ranks rank name detail {
-  font-size: 1.4em;
+  font-size: 1.3em;
   font-family: var(--themeFont);
 }
 
@@ -2691,10 +2714,6 @@ confetti.drop {
     background-color: hsl(var(--appBackground));
   }
 
-  smallbuttons,
-  controlgroup {
-    column-gap: 6px;
-  }
 
   currentscore {
     margin: 0px;
