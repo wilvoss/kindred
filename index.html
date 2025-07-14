@@ -53,7 +53,7 @@
       @click="HandleTouchApp()">
       <link v-if="userSettingsUseDarkMode" rel="stylesheet" href="styles/kindred-darkmode.css" media="screen" />
       <link v-if="userSettingsUseCats" rel="stylesheet" href="styles/cats-kindred.css" media="screen" />
-      <link v-if="userSettingsUseAltPatterns" rel="stylesheet" href="styles/altpattern1.css" media="screen" />
+      <link v-if="userSettingsUseAltPatterns" rel="stylesheet" href="styles/altpattern2.css" media="screen" />
       <notification :tab-index="appVisualStateShowNotification ? 0 : -1" :aria-hidden="!appVisualStateShowNotification"
         @pointerdown="appVisualStateShowNotification = false" :class="{show: appVisualStateShowNotification}">
         <message v-html="appNotificationMessage"></message>
@@ -92,10 +92,12 @@
                 <ranklabel>{{userSettingsUseHardCoreMode ? '' : ''}}
                 </ranklabel>
                 <name>
-                  <detail :style="{color: 'hsl(' + getCurrentPlayerRank.hue + ', 50%, 50%)'}">
+                  <detail
+                    :style="{color: getCurrentPlayerRank.rank === 6 ? 'white': 'hsl(' + getCurrentPlayerRank.hue + ', 50%, 50%)'}">
                     {{getCurrentPlayerRank.name}}
                   </detail>
-                  <credit class="simple" v-html="getHomePageRankSubcredit"></credit>
+                  <credit :style="{color: getCurrentPlayerRank.rank === 6 ? 'white': 'hsl(var(--appForeground))'}"
+                    v-html="getHomePageRankSubcredit"></credit>
                 </name>
               </rank>
             </ranks>
@@ -404,7 +406,7 @@
               <container class="dropped">
                 <piece style="mask-image: var(--shape3); background-color: var(--color2)">
                   <face></face>
-                  <gild style="background-image: var(--bgImage3)">
+                  <gild style="background-image: var(--bgImage2)">
 
                   </gild>
                 </piece>
@@ -412,7 +414,7 @@
               <container class="dropped">
                 <piece style="mask-image: var(--shape2); background-color: var(--color3)">
                   <face></face>
-                  <gild style="background-image: var(--bgImage2)">
+                  <gild style="background-image: var(--bgImage3)">
 
                   </gild>
                 </piece>

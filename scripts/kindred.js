@@ -14,7 +14,7 @@ var app = new Vue({
   data: {
     serviceWorker: '',
     storedVersion: 0,
-    currentVersion: '1.0.011',
+    currentVersion: '1.0.012',
     deviceHasTouch: true,
     allPlayerRanks: AllPlayerRanks,
     currency: new Currency(),
