@@ -29,7 +29,7 @@
   /* app measurements */
   --appMaxHeight: 860px;
   --targetX: 50%;
-  --borderRadius: 6px;
+  --borderRadius: 25px;
   --defaultUnit: 8px;
   --defaultGap: 24px;
   --chromeHeight: 40px;
@@ -374,7 +374,8 @@ content::-webkit-scrollbar {
 page content {
   justify-content: space-between;
   gap: var(--defaultGap);
-  padding-bottom: calc(2 * var(--defaultGap) + safe-area-inset-bottom);
+  padding-bottom: calc(2 * var(--defaultGap) + env(safe-area-inset-bottom));
+  height: calc(100% - (2 * var(--defaultGap)) + env(safe-area-inset-bottom));
   overflow-y: scroll;
 }
 
@@ -693,11 +694,19 @@ a.button:active {
 smallbuttons,
 controlgroup {
   display: flex;
-  column-gap: 8px;
+  column-gap: 7px;
   flex-direction: row;
   justify-content: space-between;
   width: 250px;
   text-align: left;
+}
+
+smallbuttons button:first-of-type {
+  border-radius: 25px 6px 6px 25px;
+}
+
+smallbuttons button:last-of-type {
+  border-radius: 6px 25px 25px 6px;
 }
 
 controlgroup {
@@ -1677,7 +1686,12 @@ modal me container {
   transform: translateY(0) scale(1);
   transition: 200ms ease-out;
   transition-property: transform, opacity;
-  border-radius: var(--borderRadius);
+  border-radius: 50%;
+}
+
+me container piece {
+  scale: .83;
+  margin-top: 4px;
 }
 
 container.include,
@@ -1771,7 +1785,7 @@ tutorial me {
 
 stage me container,
 tutorial me container {
-  transform: translateY(0) scale(1.1);
+  transform: translateY(0) scale(1.2);
 }
 
 modal me container piece gild {
