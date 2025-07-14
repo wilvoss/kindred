@@ -251,25 +251,25 @@ class ThemeObject {
 
 var Themes = [
   new ThemeObject({
+    name: 'Alive',
+    color1: 'rgb(0 176 243)',
+    color2: 'rgb(37 194 46)',
+    color3: 'rgb(239 216 0)',
+    color3contrast: 'rgb(0 136 8)',
+    isSelected: true,
+  }),
+  new ThemeObject({
     name: 'Content',
     color1: 'rgb(0 202 234)',
     color2: 'rgb(84, 184, 0)',
     color3: 'rgb(184 222 0)',
     color3contrast: 'rgb(56, 122, 0)',
-    isSelected: true,
   }),
   new ThemeObject({
     name: 'Keen',
     color1: 'rgb(0 184 255)',
     color2: 'rgb(0 222 0) ',
     color3: 'rgb(255, 112, 227)',
-  }),
-  new ThemeObject({
-    name: 'Alive',
-    color1: 'rgb(37 194 46)',
-    color2: 'rgb(0 176 243)',
-    color3: 'rgb(239 216 0)',
-    color3contrast: 'rgb(0 136 8)',
   }),
   new ThemeObject({
     name: 'Wise',
