@@ -14,7 +14,7 @@ var app = new Vue({
   data: {
     serviceWorker: '',
     storedVersion: 0,
-    currentVersion: '1.0.022',
+    currentVersion: '1.0.023',
     deviceHasTouch: true,
     allPlayerRanks: AllPlayerRanks,
     currency: new Currency(),
@@ -231,15 +231,14 @@ var app = new Vue({
 
     RemoveConfetti() {
       note('RemoveConfetti() called');
-      let allConfetti = document.getElementsByTagName('confetti');
-      for (let _x = allConfetti.length - 1; _x >= 0; _x--) {
-        document.body.removeChild(allConfetti[_x]);
-      }
+      let confetti = document.getElementsByTagName('confetti')[0];
+      confetti.innerHTML = '';
     },
 
     CreateConfetti(_hue = null, _rank = null) {
       note('CreateConfetti() called');
       this.RemoveConfetti();
+      let confetti = document.getElementsByTagName('confetti')[0];
       _rank = _rank === null ? this.userRank : _rank;
       let domApp = document.getElementsByTagName('app')[0];
       let count = domApp.clientWidth;
@@ -251,23 +250,23 @@ var app = new Vue({
       }
 
       for (let x = 0; x < count; x++) {
-        let confetti = document.createElement('confetti');
+        let confetto = document.createElement('confetto');
         let hue = useHue ? this.getCurrentPlayerRank.hue : getRandomInt(0, 360);
         if (_hue !== null && useHue) {
           hue = _hue;
         }
 
         let lightness = useHue ? getRandomInt(50, 100) : 60;
-        confetti.style.setProperty('left', getRandomInt(0, domApp.clientWidth) + (window.innerWidth - domApp.clientWidth) / 2 + 'px');
-        confetti.style.setProperty('transition-duration', getRandomInt(1600, 3001) + 'ms');
-        confetti.style.setProperty('transition-delay', getRandomInt(0, 800) + 'ms');
-        confetti.style.setProperty('background-color', 'hsl(' + hue + ',80%, ' + lightness + '%)');
-        confetti.style.setProperty('rotate', +'deg');
+        confetto.style.setProperty('left', getRandomInt(0, domApp.clientWidth) + (window.innerWidth - domApp.clientWidth) / 2 + 'px');
+        confetto.style.setProperty('transition-duration', getRandomInt(1600, 3001) + 'ms');
+        confetto.style.setProperty('transition-delay', getRandomInt(0, 800) + 'ms');
+        confetto.style.setProperty('background-color', 'hsl(' + hue + ',80%, ' + lightness + '%)');
+        confetto.style.setProperty('rotate', +'deg');
         let width = getRandomInt(40, 100) / 10;
         let height = getRandomInt(40, 100) / 10;
-        confetti.style.setProperty('width', width + 'px');
-        confetti.style.setProperty('height', height + 'px');
-        document.body.appendChild(confetti);
+        confetto.style.setProperty('width', width + 'px');
+        confetto.style.setProperty('height', height + 'px');
+        confetti.appendChild(confetto);
       }
       window.setTimeout(
         function () {

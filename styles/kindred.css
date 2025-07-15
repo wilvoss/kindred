@@ -2210,19 +2210,6 @@ gameover h2 {
   margin-top: var(--defaultGap);
 }
 
-confetti {
-  display: block;
-  position: fixed;
-  top: -20px;
-  transform: translate(0px -10px) rotate(0deg);
-  opacity: 8;
-  z-index: 3000;
-  transition-timing-function: ease-in;
-  background: black;
-  width: 10px;
-  height: 10px;
-  pointer-events: none;
-}
 
 herald {
   display: flex;
@@ -2625,17 +2612,36 @@ ranks rank credit {
   display: none;
 }
 
-
 ranks rank name detail {
   font-size: 1.2em;
   font-family: var(--themeFont);
 }
 
-confetti.drop {
-  opacity: 1;
-  transition-property: all;
+confetti {
+  display: block;
+  position: absolute;
+  width: 100%;
+  max-width: var(--appMaxWidth);
+  height: 100%;
+  max-height: var(--appMaxHeight);
+  pointer-events: none;
 }
 
+confetto,
+canvas {
+  display: block;
+  position: fixed;
+  top: -20px;
+  transform: translate(0px -10px) rotate(0deg);
+  opacity: 1;
+  z-index: 3000;
+  transition-property: transform, opacity;
+  transition-timing-function: ease-in;
+  background: var(--appForeground);
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+}
 
 @media only screen and (max-height: 600px) {
   page content {
