@@ -2620,6 +2620,7 @@ ranks rank name detail {
 confetti {
   display: block;
   position: absolute;
+  z-index: 3000;
   width: 100%;
   max-width: var(--appMaxWidth);
   height: 100%;
@@ -2634,8 +2635,7 @@ canvas {
   top: -20px;
   transform: translate(0px -10px) rotate(0deg);
   opacity: 1;
-  z-index: 3000;
-  transition-property: transform, opacity;
+  transition-property: translate, rotate, opacity;
   transition-timing-function: ease-in;
   background: var(--appForeground);
   width: 10px;

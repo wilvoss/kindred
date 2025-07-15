@@ -14,7 +14,7 @@ var app = new Vue({
   data: {
     serviceWorker: '',
     storedVersion: 0,
-    currentVersion: '1.0.023',
+    currentVersion: '1.0.024',
     deviceHasTouch: true,
     allPlayerRanks: AllPlayerRanks,
     currency: new Currency(),
@@ -270,12 +270,12 @@ var app = new Vue({
       }
       window.setTimeout(
         function () {
-          let allConfetti = document.getElementsByTagName('confetti');
+          let allConfetti = document.getElementsByTagName('confetto');
           for (let _x = 0; _x < allConfetti.length; _x++) {
-            const confetti = allConfetti[_x];
-            confetti.style.setProperty('translate', parseInt(getRandomInt(-20, 20)) + 'px ' + parseInt(document.body.clientHeight - confetti.clientHeight + 20) + 'px');
-            confetti.style.setProperty('rotate', getRandomInt(-360, 360) + 'deg');
-            confetti.className = 'drop';
+            const confetto = allConfetti[_x];
+            confetto.style.setProperty('translate', parseInt(getRandomInt(-20, 20)) + 'px ' + parseInt(document.body.clientHeight - confetto.clientHeight + 20) + 'px');
+            confetto.style.setProperty('rotate', getRandomInt(-360, 360) + 'deg');
+            confetto.className = 'drop';
           }
         },
         this.appVisualStateShowPageGameOver ? 300 : 10,
