@@ -74,6 +74,30 @@
       "sizes": "1125x2436",
       "type": "image/png",
       "platform": "narrow"
+    },
+    {
+      "src": "images/6.png",
+      "sizes": "1125x2436",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "images/7.png",
+      "sizes": "1125x2436",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "images/8.png",
+      "sizes": "1125x2436",
+      "type": "image/png",
+      "platform": "narrow"
+    },
+    {
+      "src": "images/9.png",
+      "sizes": "1125x2436",
+      "type": "image/png",
+      "platform": "narrow"
     }
   ],
   "handle_links": "preferred",
