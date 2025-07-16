@@ -521,10 +521,7 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       this.documentCssRoot.style.setProperty('--color2', _theme.color2);
       this.documentCssRoot.style.setProperty('--color3', _theme.color3);
       this.documentCssRoot.style.setProperty('--color3contrast', _theme.color3contrast);
-      this.documentCssRoot.style.setProperty('--darkBlendMode', _theme.darkBlendMode);
-      this.documentCssRoot.style.setProperty('--darkPatternOpacity', _theme.darkPatternOpacity);
       if (this.userSettingsUseDarkMode) {
-        this.documentCssRoot.style.setProperty('--patternHSL', _theme.darkPatternHSL);
       } else {
         this.documentCssRoot.style.setProperty('--patternHSL', '0, 0%, 100%');
       }

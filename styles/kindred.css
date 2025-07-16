@@ -153,7 +153,6 @@ h1 {
   flex-basis: auto;
   margin: 0px 0px 0px 0px;
   color: var(--color1);
-  /* color: hsl(var(--appForegroundWeak)); */
   font-size: 2.3em;
   font-family: var(--themeFont);
 }
@@ -187,7 +186,6 @@ modal h1 {
 modal h2 {
   padding-top: var(--defaultGap);
   width: 100%;
-  /* border-top: 1px solid hsla(var(--appForeground), .075); */
 }
 
 p,
@@ -524,7 +522,6 @@ page a.button.secondary {
 }
 
 page button.on {
-  /* outline: 1px solid hsla(var(--appForeground), 0.25); */
   background-color: hsla(var(--appForeground), 0.05);
 }
 
@@ -630,7 +627,6 @@ section.store {
   width: 100%;
   overflow: visible;
   text-align: left;
-  /* height: 0px; */
 }
 
 header icon {
@@ -1151,7 +1147,6 @@ leftright {
   padding: 1px 9px;
   width: calc(70%);
   min-width: 260px;
-  /* transition: var(--transitionTime) var(--transitionEase) all; */
 }
 
 controlgroup leftright,
@@ -1196,7 +1191,6 @@ actionitems {
 actionitem {
   display: block;
   border-radius: var(--borderRadius);
-  /* text-transform: uppercase; */
   padding: 8px 2px 6px;
   width: 50px;
   color: var(--color2);
@@ -1243,7 +1237,6 @@ rewardcontainer {
   justify-content: start;
   align-items: center;
   transition: 250ms ease-out all;
-  /* border: 1px solid hsla(var(--appForeground), .2); */
   margin: calc(2 * var(--defaultUnit)) 0 0;
   border-radius: var(--borderRadius);
   width: calc(100% - var(--defaultUnit));
@@ -1262,7 +1255,6 @@ rewards:first-of-type {
 rewards h2,
 rewards h2+credit {
   margin: 0 0 var(--defaultUnit) 0;
-  /* padding: 0 var(--defaultUnit); */
 }
 
 reward {
@@ -1302,7 +1294,6 @@ explanation span {
 
 .expanded explanation {
   transition-delay: 0ms;
-  /* border-color: hsla(var(--appForeground), .2); */
   max-height: 70px;
 }
 
@@ -1342,9 +1333,6 @@ reward button.quaternary:focus {
   height: 40px;
   line-height: 100%;
   font-family: 'Abel';
-  /* font-family: -apple-system, Arial, sans-serif; */
-  /* text-align: center; */
-  /* border: 0; */
 }
 
 .show reward button.quaternary:last-of-type,
@@ -2216,7 +2204,6 @@ herald {
   justify-content: center;
   align-items: start;
   box-shadow: inset 0px 0px 6px hsla(0, 0%, 0%, 0.2);
-  /* border-radius: 50%; */
   width: 180px;
   height: 180px;
 }
@@ -2246,7 +2233,6 @@ herald {
 }
 
 page herald {
-  /* background-image: repeating-radial-gradient(circle, hsla(0, 0%, 0%, 0) 0px, hsla(0, 0%, 0%, 0) 18%, hsla(0, 0%, 0%, .3) 18%, hsla(0, 0%, 0%, .3) 36%); */
   mask-image: url(../images/CatCircle.svg);
   mask-position: top center;
   mask-size: 50%;
@@ -2261,11 +2247,6 @@ herald icon {
   background-repeat: none;
   width: 95%;
   height: 99%;
-  /* transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backdrop-filter: blur(0);
-  -webkit-filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, .5));
-  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, .5)); */
 }
 
 rank herald {
@@ -2423,7 +2404,6 @@ rank herald.rank6 icon {
 
 
 ranks {
-  /* margin-top: var(--defaultGap); */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -2455,8 +2435,6 @@ span.locked rank {
 ranks rank {
   gap: 0px;
   margin-bottom: 0px;
-  /* box-shadow: inset 0px 1px 4px hsla(0, 0%, 0%, 0.4); */
-  /* background-image: linear-gradient(-45deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0), rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)); */
   padding: 0px 6px;
   width: 100%;
   max-width: 330px;
@@ -2464,21 +2442,9 @@ ranks rank {
   text-shadow: none;
 }
 
-/* 
-page ranks rank {
-  box-shadow: inset 0px 1px 4px hsla(0, 0%, 0%, .4);
-
-} */
-
-
 ranks rank name {
   padding: 17px 0px 10px;
 }
-
-/* 
-page ranks {
-  margin-top: -108px;
-} */
 
 page ranks+credit {
   margin-top: 8px;
@@ -2518,7 +2484,6 @@ page ranks rank {
   padding-left: 0px;
   width: 280px;
   overflow: hidden;
-  /* box-shadow: 0px -2px 4px hsla(0, 0%, 0%, .25); */
 }
 
 

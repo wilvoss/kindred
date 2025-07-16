@@ -17,14 +17,24 @@
 }
 
 piece gild {
-  mix-blend-mode: var(--darkBlendMode);
   opacity: var(--darkPatternOpacity);
+  mix-blend-mode: var(--darkBlendMode);
 }
 
 mode.selected piece,
 piece.selected {
   box-shadow: inset 0px 0px 4px hsla(var(--appForeground), 0.7);
   background: hsl(var(--appBackgroundStrong));
+}
+
+me container {
+  box-shadow: inset 0px 5px 5px hsla(var(--appForeground), 0.25);
+}
+
+me.pushed container,
+me container:focus,
+me container:active {
+  box-shadow: inset 0px 2px 2px hsla(var(--appForeground), 0.7);
 }
 
 me piece {
@@ -44,17 +54,21 @@ labelsmall {
   color: var(--color3);
 }
 
-page button.primary, button.primary, a.button.primary {
-  background-color: var(--color2);
+page button.primary,
+button.primary,
+a.button.primary {
   border-color: var(--color2);
+  background-color: var(--color2);
 }
 
-button.secondary, a.button.secondary {
-  background-color: var(--color1);
+button.secondary,
+a.button.secondary {
   border-color: var(--color1);
+  background-color: var(--color1);
 }
 
-page button, page a.button {
+page button,
+page a.button {
   background-color: hsla(var(--appForeground), .4);
 }
 
@@ -84,8 +98,8 @@ ranks rank.locked name {
 }
 
 page ranklabel {
-  color: hsla(var(--appForegroundStrongest), .8);
   background: hsla(var(--appBackground), .4);
+  color: hsla(var(--appForegroundStrongest), .8);
 }
 
 page ranklabel icon {
