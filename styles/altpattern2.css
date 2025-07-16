@@ -1,18 +1,9 @@
 :root {
   /* prettier-ignore */
-  --bgImage1:
-    repeating-linear-gradient(0deg,
-      hsla(var(--patternHSL), 1) 0%,
-      hsla(var(--patternHSL), 1) 25%,
-      hsla(var(--patternHSL), 0) 25%,
-      hsla(var(--patternHSL), 0) 50%,
-      hsla(var(--patternHSL), 1) 50%,
-      hsla(var(--patternHSL), 1) 75%,
-      hsla(var(--patternHSL), 0) 75%,
-      hsla(var(--patternHSL), 0) 100%);
+  --bgImage1: url(../images/Patches.svg);
 
   /* prettier-ignore */
-  --bgImage3: repeating-linear-gradient(90deg, hsla(var(--patternHSL), 1) 0px, hsla(var(--patternHSL), 1) 2%, hsla(var(--patternHSL), 0) 2%, hsla(var(--patternHSL), 0) 12.5%);
+  --bgImage3: url(../images/Waves.svg);
 
   /* prettier-ignore */
   --bgImage2: url(../images/Dots.svg);
@@ -20,9 +11,9 @@
 }
 
 piece gild {
-  rotate: -284deg;
-  scale: 1.1;
-  background-size: 40% 40%;
+  /* rotate: -284deg; */
+  scale: 1;
+  background-size: 120% 120%;
   /* background-position: 0 0, 100% 100%; */
   background-repeat: repeat;
   /* animation: rotatinggild 3 3s linear infinite;

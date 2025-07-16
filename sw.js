@@ -1,4 +1,4 @@
-const CACHE_VERSION = '1.0.025';
+const CACHE_VERSION = '1.0.026';
 const CURRENT_CACHE = `main-${CACHE_VERSION}`;
 
 // prettier-ignore
