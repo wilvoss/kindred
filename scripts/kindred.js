@@ -2082,15 +2082,25 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       HandleUpdateAppButtonClick() {
         note('HandleUpdateAppButtonClick() called');
         this.newVersionAvailable = false;
-        if (navigator.serviceWorker.controller) {
-          navigator.serviceWorker.controller.postMessage({ action: 'skipWaiting' });
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistration().then((reg) => {
+            if (reg && reg.waiting) {
+              reg.waiting.postMessage({ action: 'skipWaiting' });
+              navigator.serviceWorker.addEventListener('controllerchange', () => {
+                window.location.reload(true);
+              });
+            } else {
+              // If no waiting SW, just reload as fallback
+              window.location.reload(true);
+            }
+          });
+        } else {
+          window.location.reload(true);
         }
-        window.location.reload(true);
       },
 
       HandleServiceWorkerRegistration() {
         note('HandleServiceWorkerRegistration() called');
-        this.newVersionAvailable = false;
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker
             .register('/sw.js', { scope: '/', updateViaCache: 'none' })
