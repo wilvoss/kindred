@@ -176,12 +176,18 @@ LoadAllModules().then((modules) => {
         this.gameCurrentIsGameOver = false;
       },
 
-      ResetApp() {
+      async ResetApp() {
         note('NewGame() called');
         let confirm = window.confirm('Are you sure you want to reset the entire game? Everything will be lost!');
         if (confirm) {
           this.appIsBeingReset = true;
-          localStorage.clear();
+          await modules.ClearStore();
+          this.gameDailyChallenge = new modules.AllLevelsModel({});
+          this.gameCurrentIsGameDailyChallenge = false;
+          this.gameDailyChallengeAlreadyScored = false;
+          this.gameDailyChallengeHasBeenStarted = false;
+          this.appTutorialUserHasSeen = true;
+          modules.SaveData('appTutorialUserHasSeen', this.appTutorialUserHasSeen);
           window.location.reload();
         }
       },
@@ -783,17 +789,21 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         }
       },
 
-      CheckIfUserHasScoredDailyChallenge(fromCallback = false) {
-        note('CheckIfUserHasScoredDailyChallenge() called');
+      CheckIfUserHasScoredDailyChallenge() {
+        warn('CheckIfUserHasScoredDailyChallenge() called');
         this.gameDailyChallengeAlreadyScored = false;
-        var _today = this.FormatDate(new Date());
+        const today = new Date();
         this.userHighScoresEasy.forEach((_score) => {
-          if (_score.isDaily && _score.dailyDate !== undefined && this.FormatDate(_score.dailyDate) === _today) {
+          if (_score.isDaily && _score.dailyDate !== undefined && this.IsSameDay(_score.dailyDate, today)) {
             this.gameDailyChallengeAlreadyScored = true;
             return;
           }
         });
         return this.gameDailyChallengeAlreadyScored;
+      },
+
+      IsSameDay(date1, date2) {
+        return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate();
       },
 
       ToggleZenMode() {
@@ -1539,7 +1549,6 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       async InitializeGame() {
         note('Game Initialized');
         this.AdjustPieceSizeBasedOnViewport();
-        await this.CheckIfGameIsInNativeAppWebView();
         this.CheckForMobile();
         this.GetRandomWallpaper();
 
@@ -1600,15 +1609,17 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
           this.gameCurrentIsGameOver = true;
         }
 
-        this.GetUserSettings();
+        await this.GetUserSettings();
 
         if (!this.gameCurrentIsGameOver) {
-          this.RestoreCurrentGame();
+          await this.RestoreCurrentGame();
         }
 
         this.appSettingsInfiniteMode = this.appSettingsInfiniteMode === null ? this.GetModeById('infinite') : this.appSettingsInfiniteMode;
         this.appSettingsCurrentGameMode = this.appSettingsCurrentGameMode === null ? this.GetCurrentGameMode() : this.appSettingsCurrentGameMode;
         this.updateInterval = window.setInterval(this.UpdateApp, this.appSettingsModeIntervalIncrement);
+
+        await this.GetDailyChallenge();
       },
 
       async HandleOnPageHideEvent(_clearInterval = true) {
@@ -1855,29 +1866,6 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         }
       },
 
-      CheckIfGameIsInNativeAppWebView() {
-        note('CheckIfGameIsInNativeAppWebView() called');
-        this.isInNativeAppWebView = document.cookie.match(/^(.*;)?\s*app-platform\s*=\s*[^;]+(.*)?$/) !== null;
-        if (!this.isInNativeAppWebView) {
-          this.isInNativeAppWebView = window.location.search.indexOf('googleplay') !== -1;
-        }
-        return this.isInNativeAppWebView;
-      },
-
-      CheckLocalStorageSize() {
-        var _lsTotal = 0,
-          _xLen,
-          _x;
-        for (_x in localStorage) {
-          if (!localStorage.hasOwnProperty(_x)) {
-            continue;
-          }
-          _xLen = (localStorage[_x].length + _x.length) * 2;
-          _lsTotal += _xLen;
-        }
-        return 'Total = ' + (_lsTotal / 1024).toFixed(2) + ' KB';
-      },
-
       HandleOnVisibilityChange(event) {
         note('HandleOnVisibilityChange() called');
         this.appVisualStateShowGameOverContent = true;
@@ -1905,7 +1893,6 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
           }
         }
 
-        this.CheckIfGameIsInNativeAppWebView();
         this.GetDailyChallenge();
         this.CheckForServiceWorkerUpdate();
 
@@ -1929,7 +1916,7 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
           let seed = parseInt(today.toLocaleDateString('en-UK').replace(/\//g, ''));
           modules.ConstructAllLevels(this.GenerateNumbers(seed), this.gameDailyChallenge);
         }
-        this.CheckIfUserHasScoredDailyChallenge(true);
+        this.CheckIfUserHasScoredDailyChallenge();
       },
 
       GenerateNumbers(seed) {
