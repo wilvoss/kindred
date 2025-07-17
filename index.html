@@ -126,7 +126,7 @@
                 {{getCurrentGameModeComputed.id === 'infinite' ? 'On' : 'Off'}}</button>
               <smallbuttons>
                 <button class="inline" title="Click to adjust the game settings."
-                  @click="ToggleSettings($event, true)">Settings</button>
+                  @click="ToggleSettings($event, true)">Options</button>
                 <button title="Click to learn how to play Kindred Cats" class="inline"
                   @click="ToggleHowToPlay($event, true)">Tutorial</button>
               </smallbuttons>
@@ -386,7 +386,7 @@
           </chrome>
           <content>
             <header>
-              <h1>Settings</h1>
+              <h1>Options</h1>
             </header>
             <section>
               <h2>General</h2>
@@ -548,7 +548,7 @@
           v-if="!appVisualStateShowPageHome && !appTutorialIsInPlay" :class="{paused: gameCurrentIsPaused}">
           <chrome
             :class="{hide: !appVisualStateShowGameOverContent, alert: gameCurrentTimer < 6000 && !getInfiniteModeComputed.isSelected}">
-            <button @click="ToggleSettings($event, true)">Settings</button>
+            <button @click="ToggleSettings($event, true)">Options</button>
             <gameinfo @click="ToggleGamePause($event, !gameCurrentIsPaused)">
               <labelsmall v-if="getNormalModeComputed.isSelected"> level {{parseInt(gameCurrentNumberOfClears) + 1}}
                 <span>of</span> {{getCurrentPlayerRank.levels}}
