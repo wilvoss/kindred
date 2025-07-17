@@ -2090,11 +2090,13 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
 
       HandleServiceWorkerRegistration() {
         note('HandleServiceWorkerRegistration() called');
+        this.newVersionAvailable = false;
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker
             .register('/sw.js', { scope: '/', updateViaCache: 'none' })
             .then((reg) => {
               note('Service worker registered with scope: ' + reg.scope);
+              this.newVersionAvailable = true;
               return navigator.serviceWorker.ready;
             })
             .then(() => {
