@@ -1,4 +1,4 @@
-const CACHE_VERSION = '1.0.031';
+const CACHE_VERSION = '1.0.032';
 const CURRENT_CACHE = `main-${CACHE_VERSION}`;
 
 // prettier-ignore
@@ -116,6 +116,20 @@ self.addEventListener('message', function (event) {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Network-first for navigation requests (e.g., /, /index.html)
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          return caches.open(CURRENT_CACHE).then((cache) => {
+            cache.put(event.request, response.clone());
+            return response;
+          });
+        })
+        .catch(() => caches.match(event.request)),
+    );
+    return;
+  }
   if (event.request.url.endsWith('.txt')) {
     // Bypass the service worker and always fetch from the network
     event.respondWith(fetch(event.request));
