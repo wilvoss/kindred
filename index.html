@@ -338,17 +338,15 @@
             <header>
               <h1>High Scores</h1>
             </header>
-            <section v-if="gameLastHighScore.isCurrent">
-              <h2 style="margin-bottom: var(--defaultGap)">Last Game</h2>
+            <section>
+              <h3 style="margin-bottom: var(--defaultGap)">Last Game</h3>
               <leftright @click="SetScoreForSharingAndShare(gameLastHighScore)"
                 :title="gameLastHighScore.isDaily ? 'Recorded for the ' + FormatDate(gameLastHighScore.dailyDate) + ' daily challange.' : ''"
                 class="lastscore">
                 <left>{{gameLastHighScore.isDaily ? 'Daily Challenge' : gameLastHighScore.modeName}}</left>
-                <right>{{NumberWithCommas(gameLastHighScore.value)}}</right>
+                <right>{{gameLastHighScore.value === -1 ? '--' : NumberWithCommas(gameLastHighScore.value)}}</right>
               </leftright>
-            </section>
-            <section>
-              <h2 style="margin-bottom: var(--defaultGap)">Daily Challenge</h2>
+              <h3 style="margin-bottom: var(--defaultGap)">Daily Challenge</h3>
               <leftright @click="SetScoreForSharingAndShare(score, getNormalModeComputed)"
                 v-for="score in userScoresHighDailyByDate">
                 <left>{{FormatDate(score.date)}}</left>
@@ -357,7 +355,7 @@
               <leftright v-for="e in appSettingsNumberOfHighScoresShown - userScoresHighDailyByDate.length">
                 <left></left>&nbsp;<right></right>
               </leftright>
-              <h2 style="margin-bottom: var(--defaultGap)">Ranked Games</h2>
+              <h3 style="margin-bottom: var(--defaultGap)">Ranked Games</h3>
               <leftright @click="SetScoreForSharingAndShare(score, getNormalModeComputed)"
                 v-for="score in userScoresHighEasyByValue" :class="{current: score.isCurrent}">
                 <left>{{FormatDate(score.date)}}</left>

@@ -442,11 +442,11 @@ LoadAllModules().then((modules) => {
           }
           this.gameScoreToShare = _score;
           if (this.appVisualStateShowNotification) {
-            window.setTimeout(function () {
-              app.ShareScore(_rankedUp);
+            setTimeout(() => {
+              this.ShareScore(_rankedUp);
             }, 200);
           } else {
-            app.ShareScore(_rankedUp);
+            this.ShareScore(_rankedUp);
           }
         }
       },
@@ -755,23 +755,24 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       },
 
       // adds the animation of remaining time at the end of a game
-      // being reduced to 0 while the score is increased by 1 for each second -
+      // being reduced to 0 while the score is increased by 1 for each second remaining
       HandleAddBonusToScoreInterval() {
+        highlight('HandleAddBonusToScoreInterval() called');
         let _interval = 1000 / (this.gameCurrentTimer / 1000);
         _interval = _interval > 100 ? 100 : _interval;
         this.appVisualStateIsAddingBonusTime = true;
-        this.appSettingsAddBonusToScoreInterval = window.setInterval(function () {
-          if (app.gameCurrentTimer > 0) {
-            app.gameCurrentTotalScore++;
-            app.gameLastHighScore.value = app.gameCurrentTotalScore;
-            app.gameCurrentTimer = app.gameCurrentTimer - 1000;
+        this.appSettingsAddBonusToScoreInterval = setInterval(() => {
+          if (this.gameCurrentTimer > 0) {
+            this.gameCurrentTotalScore++;
+            this.gameLastHighScore.value = this.gameCurrentTotalScore;
+            this.gameCurrentTimer = this.gameCurrentTimer - 1000;
           } else {
-            if (app.gameLastHighScore === app.userScoresHighEasyByValue[0]) {
-              app.appVisualStateShowNewHighScoreElement = true;
+            if (this.gameLastHighScore === this.userScoresHighEasyByValue[0]) {
+              this.appVisualStateShowNewHighScoreElement = true;
             }
             this.SaveUserHighScoreEasy();
-            window.clearInterval(app.appSettingsAddBonusToScoreInterval);
-            app.appVisualStateIsAddingBonusTime = false;
+            clearInterval(this.appSettingsAddBonusToScoreInterval);
+            this.appVisualStateIsAddingBonusTime = false;
           }
         }, _interval);
       },
@@ -782,10 +783,12 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       },
 
       AddBonusToScore() {
-        note('AddBonusToScore() called');
+        highlight('AddBonusToScore() called');
         if (this.gameCurrentTimer > 0 && this.gameLastHighScore.isDaily && this.gameCurrentNumberOfClears === this.gameDailyChallenge.allLevels.length) {
           this.appVisualStateIsAddingBonusTime = true;
-          window.setTimeout(this.HandleAddBonusToScoreInterval, 1000);
+          setTimeout(() => {
+            this.HandleAddBonusToScoreInterval();
+          }, 1000);
         }
       },
 
