@@ -2091,15 +2091,15 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         note('HandleServiceWorkerRegistration() called');
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker
-            .register('/sw.js', {
-              scope: '/',
-              updateViaCache: 'none',
-            })
+            .register('/sw.js', { scope: '/', updateViaCache: 'none' })
             .then((reg) => {
               note('Service worker registered with scope: ' + reg.scope);
+              return navigator.serviceWorker.ready;
+            })
+            .then(() => {
+              note('Service worker is active and controlling the page.');
             })
             .catch((err) => {
-              console.error('Service worker registration failed:', err);
               error(`Service worker registration failed: ${err.message}`);
             });
         } else {
