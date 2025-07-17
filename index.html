@@ -43,7 +43,7 @@
 
     <link rel="manifest" href="manifest.webmanifest" />
 
-    <link rel="stylesheet" href="styles/kindred.css?1.0.029" media="screen" />
+    <link rel="stylesheet" href="styles/kindred.css" media="screen" />
   </head>
 
   <body>
@@ -54,10 +54,9 @@
       <app v-cloak
         :class="[{basic: !userSettingsUseCats, hardcore: userSettingsUseHardCoreMode},('rank' + getCurrentPlayerRank.rank), {challenge: appVisualStateShowPageChallenge, tutorial: appTutorialIsInPlay, splashboard: splashBoard}]"
         @click="HandleTouchApp()">
-        <link v-if="userSettingsUseDarkMode" rel="stylesheet" href="styles/kindred-darkmode.css?1.0.029"
-          media="screen" />
-        <link v-if="userSettingsUseCats" rel="stylesheet" href="styles/cats-kindred.css?1.0.029" media="screen" />
-        <link v-if="userSettingsUseAltPatterns" rel="stylesheet" href="styles/altpattern2.css?1.0.029" media="screen" />
+        <link v-if="userSettingsUseDarkMode" rel="stylesheet" href="styles/kindred-darkmode.css" media="screen" />
+        <link v-if="userSettingsUseCats" rel="stylesheet" href="styles/cats-kindred.css" media="screen" />
+        <link v-if="userSettingsUseAltPatterns" rel="stylesheet" href="styles/altpattern2.css" media="screen" />
         <notification :tab-index="appVisualStateShowNotification ? 0 : -1" :inert="!appVisualStateShowNotification"
           @pointerdown="appVisualStateShowNotification = false" :class="{show: appVisualStateShowNotification}">
           <message v-html="appNotificationMessage"></message>
@@ -717,7 +716,7 @@
     <script src="helpers/console-enhancer.js" type="text/javascript"></script>
     <script src="helpers/seedrandom.js" type="text/javascript"></script>
     <script src="helpers/howler-min.js" type="text/javascript"></script>
-    <script type="module" src="scripts/kindred.js?1.0.029" type="text/javascript"></script>
+    <script type="module" src="scripts/kindred.js" type="text/javascript"></script>
   </body>
 
 </html>
