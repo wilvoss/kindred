@@ -30,6 +30,7 @@
   --appMaxHeight: 860px;
   --targetX: 50%;
   --borderRadius: 25px;
+  --meBorderRadius: 6px;
   --defaultUnit: 8px;
   --defaultGap: 24px;
   --chromeHeight: 40px;
@@ -81,7 +82,7 @@ body {
   background: var(--color2);
 }
 
-body {
+main {
   background: transparent;
   width: 100%;
   height: 100%;
@@ -250,6 +251,7 @@ stage {
 }
 
 page,
+splash,
 modal,
 challenge,
 tutorial {
@@ -268,7 +270,12 @@ tutorial {
   height: 100%;
   max-height: var(--appMaxHeight);
   pointer-events: none;
+}
 
+splash {
+  justify-content: center;
+  align-items: center;
+  gap: var(--defaultGap)
 }
 
 modal.semitransparent,
@@ -434,6 +441,7 @@ modal {
 
 page.show,
 modal.show,
+splash.show,
 tutorial.show,
 challenge.show {
   transform: translateY(0px);
@@ -448,7 +456,7 @@ modal.show.notransition {
 }
 
 modal.show.preview.notransition {
-  transition: 600ms ease-in-out all;
+  transition: 100ms ease-in-out all;
 }
 
 page button.primary,
@@ -1238,7 +1246,7 @@ rewardcontainer {
   align-items: center;
   transition: 250ms ease-out all;
   margin: calc(2 * var(--defaultUnit)) 0 0;
-  border-radius: var(--borderRadius);
+  border-radius: 6px;
   width: calc(100% - var(--defaultUnit));
   max-height: 60px;
   overflow: hidden;
@@ -1693,7 +1701,7 @@ modal me container {
 .basic page container,
 .basic modal modes container,
 .basic modal me container {
-  border-radius: var(--borderRadius);
+  border-radius: var(--meBorderRadius);
 }
 
 me container piece {
@@ -1989,7 +1997,7 @@ theme {
   justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
-  border-radius: var(--borderRadius);
+  border-radius: 6px;
   padding: 8px 0px 8px;
   width: 25%;
   font-size: 0.9em;
