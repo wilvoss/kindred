@@ -530,7 +530,7 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       },
 
       async SelectTheme(_theme) {
-        highlight('SelectTheme(theme) called for: "' + _theme.name + '"');
+        note('SelectTheme(theme) called for: "' + _theme.name + '"');
         this.appSettingsThemes.forEach((t) => {
           t.isSelected = _theme == t;
         });
@@ -1058,10 +1058,7 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         }
 
         let _appTutorialUserHasSeen = await modules.GetData('appTutorialUserHasSeen');
-        highlight('setting OOBE tutorial based on local storage');
-        if (_appTutorialUserHasSeen) {
-          warn(_appTutorialUserHasSeen);
-        }
+        note('setting OOBE tutorial based on local storage');
         if (_appTutorialUserHasSeen !== undefined && _appTutorialUserHasSeen !== null) {
           _appTutorialUserHasSeen = JSON.parse(_appTutorialUserHasSeen);
           if (!_appTutorialUserHasSeen) {
@@ -1126,8 +1123,8 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         if (_darkmode !== undefined && _darkmode !== null) {
           _darkmode = JSON.parse(_darkmode);
           this.userSettingsUseDarkMode = _darkmode;
-          document.getElementById('themeColor').content = this.userSettingsUseDarkMode ? '#000000' : '#f0f0f0';
         }
+        document.getElementById('themeColor').content = this.userSettingsUseDarkMode ? '#000000' : '#f0f0f0';
 
         let _userSettingsTheme = await modules.GetData('userSettingsTheme');
         try {
@@ -1736,8 +1733,8 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         this.gameCurrentTimer = this.gameCurrentTimer + this.appSettingsCurrentGameMode.bonustime;
         if (this.appSettingsCurrentGameMode.bonustime > 0) {
           this.appVisualStateShowElementFlyaway = true;
-          window.setTimeout(function () {
-            app.appVisualStateShowElementFlyaway = false;
+          setTimeout(() => {
+            this.appVisualStateShowElementFlyaway = false;
           }, 100);
         }
       },
@@ -2112,7 +2109,7 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
               updateViaCache: 'none',
             })
             .then((reg) => {
-              log('Service worker registered with scope:', reg.scope);
+              note('Service worker registered with scope: ' + reg.scope);
             })
             .catch((err) => {
               console.error('Service worker registration failed:', err);
@@ -2128,7 +2125,7 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       highlight(`App version ${version} initiated`, true);
       this.appVisualStateIsLoading = true;
       UseDebug = document.location.href.indexOf('local') != -1 || document.location.href.indexOf('debug=true') != -1;
-      UseDebug = false;
+      // UseDebug = false;
 
       this.HandleServiceWorkerRegistration();
       await this.InitializeGame();

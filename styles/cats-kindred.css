@@ -7,18 +7,18 @@
   --patternOpacity: .4;
 }
 
-wallpaper.square {
+wallpaper.square pattern {
   background-image: url(../images/CatSquare.svg);
 }
 
-wallpaper.circle {
+wallpaper.circle pattern {
   background-image: url(../images/CatCircle.svg);
 }
 
-wallpaper.triangle {
+wallpaper.triangle pattern {
   background-image: url(../images/CatTriangle.svg);
 }
 
-wallpaper.hexagon {
+wallpaper.hexagon pattern {
   background-image: url(../images/CatHexagon.svg);
 }

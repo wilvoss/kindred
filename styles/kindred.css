@@ -21,6 +21,7 @@
   --appBackgroundStrongest: 0, 0%, 100%;
   --appBackgroundWeak: 0, 0%, 89%;
   --appBackgroundWeakest: 0, 0%, 80%;
+  --mainOnion: linear-gradient(rgba(0, 0, 0, .65), rgba(0, 0, 0, 0.65));
   --appForeground: 0, 0%, 26%;
   --appForegroundStrong: 0, 0%, 10%;
   --appForegroundStrongest: 0, 0%, 0%;
@@ -79,7 +80,7 @@ body {
   font-family: var(--appFont);
   user-select: none;
   -webkit-user-select: none;
-  background: var(--color2);
+  background-color: hsl(var(--appBackground));
 }
 
 main {
@@ -103,26 +104,35 @@ wallpaper {
   position: absolute;
   translate: -40vw -50vw;
   rotate: 31deg;
-  opacity: 0.7;
-  background-size: 170px;
-  background-color: rgba(0, 0, 0, 0.92);
+  opacity: 1;
+  background-image: var(--mainOnion);
+  background-color: var(--color2);
   width: 300%;
   height: 300%;
 }
 
-wallpaper.square {
+wallpaper pattern {
+  display: block;
+  opacity: .2;
+  background-size: 170px;
+  width: 100%;
+  height: 100%;
+}
+
+
+wallpaper.square pattern {
   background-image: url(../images/Square.svg);
 }
 
-wallpaper.circle {
+wallpaper.circle pattern {
   background-image: url(../images/Circle.svg);
 }
 
-wallpaper.triangle {
+wallpaper.triangle pattern {
   background-image: url(../images/Triangle.svg);
 }
 
-wallpaper.hexagon {
+wallpaper.hexagon pattern {
   background-image: url(../images/Hexagon.svg);
 }
 
