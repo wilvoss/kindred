@@ -2096,7 +2096,6 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
             .register('/sw.js', { scope: '/', updateViaCache: 'none' })
             .then((reg) => {
               note('Service worker registered with scope: ' + reg.scope);
-              this.newVersionAvailable = true;
               return navigator.serviceWorker.ready;
             })
             .then(() => {
