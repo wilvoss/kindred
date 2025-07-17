@@ -2082,9 +2082,10 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       HandleUpdateAppButtonClick() {
         note('HandleUpdateAppButtonClick() called');
         this.newVersionAvailable = false;
-        if (this.serviceWorker !== '') {
-          window.location.reload(true);
+        if (navigator.serviceWorker.controller) {
+          navigator.serviceWorker.controller.postMessage({ action: 'skipWaiting' });
         }
+        window.location.reload(true);
       },
 
       HandleServiceWorkerRegistration() {
