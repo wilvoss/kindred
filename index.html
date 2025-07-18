@@ -330,7 +330,7 @@
           </content>
         </modal>
         <modal :tab-index="appVisualStateShowPageHighScores ? 0 : -1" :inert="!appVisualStateShowPageHighScores"
-          :class="{show: appVisualStateShowPageHighScores}">
+          :class="{show: appVisualStateShowPageHighScores}" class="scores">
           <chrome>
             <button @click="ClearEphemeralVisualStates()">done</button>
           </chrome>

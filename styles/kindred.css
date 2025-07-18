@@ -1167,6 +1167,10 @@ leftright {
   min-width: 260px;
 }
 
+.scores leftright {
+  border-radius: 6px;
+}
+
 controlgroup leftright,
 controlgroup leftright:first-of-type {
   gap: 6px;

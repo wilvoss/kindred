@@ -1861,11 +1861,18 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
       CheckForServiceWorkerUpdate() {
         note('CheckForServiceWorkerUpdate() called');
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (let registration of registrations) {
+          navigator.serviceWorker.getRegistrations().then((registrations) => {
+            let waitingFound = false;
+            registrations.forEach((registration) => {
               registration.update();
-            }
+              if (registration.waiting) {
+                waitingFound = true;
+              }
+            });
+            this.newVersionAvailable = waitingFound;
           });
+        } else {
+          this.newVersionAvailable = false;
         }
       },
 
@@ -2148,9 +2155,6 @@ ${this.NumberWithCommas(this.gameScoreToShare.value)} pts - ${this.gameScoreToSh
         });
       }
 
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        this.newVersionAvailable = true;
-      });
       this.appVisualStateIsLoading = false;
     },
 
