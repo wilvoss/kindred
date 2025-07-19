@@ -151,7 +151,6 @@
           </chrome>
           <content>
             <header>
-              <icon class="gem"></icon>
               <h1>Rewards</h1>
               <credit>Gems can be reallocated at any time. Once a Powerup is used, those gems are spent. Clearing one
                 level earns 10 gems. Clearing all levels in one game earns an additional 1,000 gems. </credit>
@@ -512,10 +511,10 @@
                 @click="SetScoreForSharingAndShare(gameLastHighScore, getCurrentGameModeComputed, gameLastHighScore.rankId !== getLastRank.rank && getNormalModeComputed.isSelected && tempPerfectBasicGames === 3)">
                 Share!<icon class="share"></icon>
               </button>
-              <button title="Click to return to the home screen." class="secondary"
-                @click="ToggleShowHomeOn(event)">Home</button>
               <button v-if="!gameLastHighScore.isDaily" title="Click to start a new game" class="primary"
                 @click="RestartGame()">New Game</button>
+              <button title="Click to return to the home screen." class="secondary"
+                @click="ToggleShowHomeOn(event)">Home</button>
             </section>
           </content>
           <chrome class="footer" v-if="getNormalModeComputed.isSelected">
@@ -691,17 +690,17 @@
               <button :aria-disabled="appTutorialCurrentStepIndex === 0" :disabled="appTutorialCurrentStepIndex === 0"
                 v-if="appTutorialCurrentStepIndex < appTutorialSteps.length - 1"
                 :class="{disabled: appTutorialCurrentStepIndex === 0}" @click="HandleTutorialBack()"
-                class="primary">Back</button>
+                class="secondary">Back</button>
               <button
                 v-if="appTutorialCurrentStepIndex < appTutorialSteps.length - 1 && appTutorialCurrentStepIndex === 4"
-                class="primary" @click="HandleTutorialNext()">Next</button>
+                class="secondary" @click="HandleTutorialNext()">Next</button>
               <button
                 v-if="appTutorialCurrentStepIndex < appTutorialSteps.length - 1 && appTutorialCurrentStepIndex !== 4"
-                class="primary" @click="HandleTutorialNext()">Next</button>
+                class="secondary" @click="HandleTutorialNext()">Next</button>
               <button v-if="!appTutorialUserHasSeen && appTutorialCurrentStepIndex === appTutorialSteps.length - 1"
-                class="secondary" @click="HandleDoneTutorial()">Let's Go!</button>
+                class="primary" @click="HandleDoneTutorial()">Let's Go!</button>
               <button v-if="appTutorialUserHasSeen && appTutorialCurrentStepIndex === appTutorialSteps.length - 1"
-                class="primary" @click="HandleSkipTutorial()">Done</button>
+                class="secondary" @click="HandleSkipTutorial()">Done</button>
             </smallbuttons>
           </section>
         </tutorial>

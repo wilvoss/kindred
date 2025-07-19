@@ -477,9 +477,9 @@ a.button {
   align-items: center;
   cursor: pointer;
   margin-bottom: 4px;
-  border: 0px solid var(--color1);
+  border: 0px solid var(--color2);
   border-radius: var(--borderRadius);
-  background-color: var(--color1);
+  background-color: var(--color2);
   padding: 13px 0;
   width: 250px;
   color: white;
@@ -505,15 +505,15 @@ a.isolate {
 
 button.primary,
 a.button.primary {
-  border-color: var(--color1);
-  background-color: var(--color1);
+  border-color: var(--color2);
+  background-color: var(--color2);
   color: white;
 }
 
 button.secondary,
 a.button.secondary {
-  border-color: var(--color2);
-  background-color: var(--color2);
+  border-color: var(--color1);
+  background-color: var(--color1);
   color: white;
 }
 
@@ -1325,7 +1325,7 @@ reward cost {
   justify-content: center;
   align-items: center;
   gap: 4px;
-  background: hsl(var(--appForeground));
+  background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)) var(--color2);
   padding: 0 var(--defaultUnit);
   width: 87px;
   height: 60px;
@@ -1335,10 +1335,11 @@ reward cost {
   font-family: var(--appFont);
 }
 
-reward cost icon {
+reward cost icon.gem {
   display: block;
+  /* background: hsl(var(--appBackground)); */
   width: 100%;
-  height: var(--defaultGap);
+  height: var(--defaultGap)
 }
 
 .show reward button.quaternary,
