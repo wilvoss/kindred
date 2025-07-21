@@ -192,7 +192,7 @@ LoadAllModules().then((modules) => {
         }
       },
 
-      CheckBoard() {
+      async CheckBoard() {
         note('CheckBoard() called');
         this.appVisualStateShowElementHint = false;
         this.gameCurrentIsUserGuessWrong = false;
@@ -201,19 +201,21 @@ LoadAllModules().then((modules) => {
         this.gameClickMeNudgeHasBeenShown = true;
         if (!this.gameCurrentIsGameOver) {
           let _perfectMatch = true;
-          this.gameCurrentBoardPieces.forEach((piece) => {
-            if ((piece.isMatch && !piece.isSelected) || (!piece.isMatch && piece.isSelected)) {
-              _perfectMatch = false;
-            }
-            if (piece.isMatch) {
-              _totalPossibleLikePieces++;
-              if (piece.isFullMatch) {
-                _totalBoardScore = _totalBoardScore + this.appSettingsScoreTwinIncrement;
-              } else {
-                _totalBoardScore = _totalBoardScore + this.appSettingsScoreSiblingIncrement;
+          await Promise.all(
+            this.gameCurrentBoardPieces.map(async (piece) => {
+              if ((piece.isMatch && !piece.isSelected) || (!piece.isMatch && piece.isSelected)) {
+                _perfectMatch = false;
               }
-            }
-          });
+              if (piece.isMatch) {
+                _totalPossibleLikePieces++;
+                if (piece.isFullMatch) {
+                  _totalBoardScore = _totalBoardScore + this.appSettingsScoreTwinIncrement;
+                } else {
+                  _totalBoardScore = _totalBoardScore + this.appSettingsScoreSiblingIncrement;
+                }
+              }
+            }),
+          );
           if (_totalPossibleLikePieces == 0) {
             _totalBoardScore = this.appSettingsScoreTwinIncrement + this.appSettingsScoreSiblingIncrement;
           }
