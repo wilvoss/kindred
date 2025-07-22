@@ -421,7 +421,7 @@ LoadAllModules().then((modules) => {
         let _shareObject = {
           title: 'Kindred Cats!',
           text: "Check out this fun game I've been playing!",
-          url: 'https://bigtentgames.com/kindred.html',
+          url: 'https://bigtentgames.com/kindredcats.html',
         };
         if (navigator.share) {
           navigator.share(_shareObject);
