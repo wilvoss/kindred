@@ -8,12 +8,10 @@
   font-family: 'Abel';
 }
 
-
 :root {
   /* app settings */
   --appFont: 'Abel', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   --themeFont: 'Theme Font', cursive;
-
   /* hsl colors */
   --appBackground: 0, 0%, 94%;
   --appBackgroundStrong: 0, 0%, 96%;
@@ -26,7 +24,6 @@
   --appForegroundStrong: 0, 0%, 10%;
   --appForegroundStrongest: 0, 0%, 0%;
   --appForegroundWeak: 0, 0%, 39%;
-
   /* app measurements */
   --appMaxHeight: 860px;
   --targetX: 50%;
@@ -38,7 +35,6 @@
   --appMaxWidth: 450px;
   --transitionTime: 250ms;
   --transitionEase: ease-in-out;
-
   /* game dynamic values */
   --pieceSize: 110px;
   --color1: hsl(313, 44%, 25%);
@@ -50,19 +46,16 @@
   --darkPatternHSL: 0, 0%, 100%;
   --rankHue: 200;
   --rankLum: 40%;
-
   /* game set values */
   --colorDanger: rgb(184, 20, 20);
   --colorRewards: hsl(180, 100%, 38%);
   --patternOpacity: 0.5;
   --patternHSL: 0, 0%, 100%;
-
   --shape1: url(./images/Square.svg);
   --shape2: url(./images/Circle.svg);
   --shape3: url(./images/Triangle.svg);
   --shape4: url(./images/Hexagon.svg);
   --infinity: url(./images/Infinity.svg);
-
   --bgImage1: repeating-linear-gradient(-45deg, hsla(var(--patternHSL), 1) 0px, hsla(var(--patternHSL), 1) 10%, hsla(var(--patternHSL), 0) 10%, hsla(var(--patternHSL), 0) 20%);
   --bgImage2: repeating-radial-gradient(circle, hsla(var(--patternHSL), 1) 0px, hsla(var(--patternHSL), 1) 14.7%, hsla(var(--patternHSL), 0) 14.7%, hsla(var(--patternHSL), 0) 29.4%);
   --bgImage3: repeating-linear-gradient(45deg, hsla(var(--patternHSL), 1) 0px, hsla(var(--patternHSL), 1) 1.1%, hsla(var(--patternHSL), 0) 1.1%, hsla(var(--patternHSL), 0) 4.5%);
@@ -81,6 +74,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   background-color: hsl(var(--appBackground));
+  touch-action: manipulation;
 }
 
 main {
@@ -118,7 +112,6 @@ wallpaper pattern {
   width: 100%;
   height: 100%;
 }
-
 
 wallpaper.square pattern {
   background-image: url(../images/Square.svg);
@@ -380,11 +373,9 @@ modal chrome+content {
 
 content::-webkit-scrollbar {
   display: none;
-
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   scrollbar-width: none;
-
   touch-action: auto;
 }
 
@@ -736,7 +727,6 @@ smallbuttons button:last-of-type {
 }
 
 controlgroup {
-
   column-gap: 6px;
   row-gap: 6px;
   flex-wrap: wrap;
@@ -847,12 +837,10 @@ icon.coffee {
   -webkit-mask-image: url(../images/icon_coffee.svg);
 }
 
-
 icon.bmc {
   mask-image: url(../images/icon_bmc.svg);
   -webkit-mask-image: url(../images/icon_bmc.svg);
 }
-
 
 icon.coffee-hand {
   mask-size: 32px;
@@ -867,7 +855,6 @@ icon.money-hand {
   mask-image: url(../images/icon_money_hand.svg);
   -webkit-mask-image: url(../images/icon_money_hand.svg);
 }
-
 
 icon.coffee-money {
   mask-size: 24px;
@@ -1419,7 +1406,6 @@ reward amount {
   color: var(--color1);
   font-size: 1.15em;
 }
-
 
 scorearea {
   display: flex;
@@ -2221,7 +2207,6 @@ gameover h2 {
   margin-top: var(--defaultGap);
 }
 
-
 herald {
   display: flex;
   justify-content: center;
@@ -2346,7 +2331,6 @@ herald.rank6 {
   background-image: linear-gradient(-45deg, hsl(39, 50%, 50%) 20%, hsl(60, 50%, 50%), hsl(120, 70%, 25%), hsl(240, 50%, 50%), hsl(300, 50%, 25%), hsl(0, 50%, 50%) 80%);
 }
 
-
 herald.rank6 {
   background-image: url(../images/burst.svg), radial-gradient(circle, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .3)), linear-gradient(-45deg, hsl(39, 50%, 50%) 20%, hsl(60, 50%, 50%), hsl(120, 70%, 25%), hsl(240, 50%, 50%), hsl(300, 50%, 25%), hsl(0, 50%, 50%) 80%);
 }
@@ -2360,11 +2344,9 @@ herald.rank6 icon {
   background-image: url(../images/icon_rank6.svg);
 }
 
-
 rank herald.rank6 icon {
   background-image: url(../images/icon_rank6_sm.svg);
 }
-
 
 .hardcore herald.rank0 icon {
   background-image: url(../images/icon_rank0_hc.svg);
@@ -2394,7 +2376,6 @@ rank herald.rank6 icon {
   background-image: url(../images/icon_rank6_hc.svg);
 }
 
-
 .hardcore rank herald.rank0 icon {
   background-image: url(../images/icon_rank0_hc_sm.svg);
 }
@@ -2422,9 +2403,6 @@ rank herald.rank6 icon {
 .hardcore rank herald.rank6 icon {
   background-image: url(../images/icon_rank6_hc_sm.svg);
 }
-
-
-
 
 ranks {
   display: flex;
@@ -2509,7 +2487,6 @@ page ranks rank {
   overflow: hidden;
 }
 
-
 @keyframes pulseglow {
   50% {
     box-shadow: 0px 0px 30px hsla(var(--rankHue), 100%, 80%, 1);
@@ -2589,7 +2566,6 @@ ranks rank credit {
 
 .simpleranks ranks rank {
   padding: 20px 20px 20px;
-
 }
 
 .simpleranks ranks rank name {
@@ -2698,7 +2674,6 @@ canvas {
     background: hsl(var(--appBackground));
     background-color: hsl(var(--appBackground));
   }
-
 
   currentscore {
     margin: 0px;
