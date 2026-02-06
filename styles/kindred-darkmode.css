@@ -10,15 +10,13 @@
   --appForegroundStrongest: 0, 0%, calc(100% - 0%);
   --appForegroundWeak: 0, 0%, calc(100% - 39%);
   --patternHSL: 0, 0%, 0%;
-  --patternOpacity: 1;
-
+  /* --patternOpacity: 1; */
   --rankLum: 67%;
-
 }
 
 piece gild {
-  opacity: var(--darkPatternOpacity);
-  mix-blend-mode: var(--darkBlendMode);
+  /* opacity: var(--darkPatternOpacity);
+  mix-blend-mode: var(--darkBlendMode); */
 }
 
 mode.selected piece,
@@ -71,7 +69,6 @@ page button,
 page a.button {
   background-color: hsla(var(--appForeground), .4);
 }
-
 
 page button.on {
   background-color: hsla(var(--appForeground), .7);

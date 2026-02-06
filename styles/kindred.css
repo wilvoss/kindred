@@ -1826,7 +1826,7 @@ piece face {
   mask-size: cover;
   mask-repeat: no-repeat;
   background-position: center center;
-  background-color: black;
+  background-color: white;
 }
 
 .basic piece face {
